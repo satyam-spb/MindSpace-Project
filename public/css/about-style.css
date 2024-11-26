@@ -1,0 +1,226 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #222;
+    background: linear-gradient(135deg, #f5f7fa, #e3eaf6);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Header Styling */
+header {
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(to right, #6a93ff, #97e9f7);
+    color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+header h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    animation: slideIn 1s ease-in-out;
+}
+
+header nav {
+    margin-top: 15px;
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+    transition: transform 0.2s;
+}
+
+header nav a:hover {
+    transform: scale(1.1);
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+/* Help Section */
+.help {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.help > h2 {
+    font-size : 2rem;
+}
+
+.help textarea {
+    width: 90%;
+    max-width: 600px;
+    height: 150px;
+    padding: 1rem;
+    font-size: 1rem;
+    border: 2px solid rgba(128, 128, 128, 0.3);
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    outline: none;
+    resize: none;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.help textarea:focus {
+    border: 2px solid rgba(60, 120, 220, 0.8);
+    box-shadow: 4px 4px 15px rgba(60, 120, 220, 0.2);
+}
+
+.submit-btn {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.8rem 2rem;
+    background: linear-gradient(135deg, #6fa3ef, #b992e2);
+    color: #fff;
+    font-weight: bold;
+    font-size: 1rem;
+    text-transform: uppercase;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 5px rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.3), inset -3px -3px 8px rgba(255, 255, 255, 0.2);
+}
+
+.submit-btn:active {
+    transform: translateY(2px);
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.3), inset -2px -2px 5px rgba(255, 255, 255, 0.1);
+}
+
+
+/* Team Section */
+.about-us h2 {
+    text-align: center; /* Center-align the text */
+    font-size: 2.5rem; /* Larger font for emphasis */
+    font-weight: bold;
+    color: #2d3436; /* Neutral dark color for better readability */
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3), /* 3D shadow effect */
+                 -2px -2px 4px rgba(255, 255, 255, 0.5); /* Light reflection effect */
+    margin: 20px 0; /* Add some vertical spacing */
+    animation: textPop 1s ease-in-out; /* Subtle pop animation */
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    justify-items: center;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.member {
+    background: linear-gradient(145deg, #ffffff, #e6e6e6);
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1), inset 0 -2px 5px rgba(0, 0, 0, 0.05);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.member:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+}
+
+
+
+/* Footer Styling */
+footer {
+    text-align: center;
+    margin-top: 20px;
+    padding: 15px;
+    background: linear-gradient(to left, #74b9ff, #a29bfe);
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+footer a {
+    color: #dfe6e9;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer a:hover {
+    text-shadow: 0.5px 0.5px 2px rgba(255, 255, 255, 0.5);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes zoomIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Add animation for a subtle pop effect */
+@keyframes textPop {
+    0% {
+        transform: scale(0.8);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .help h2, .about-us h2 {
+        font-size: 2rem;
+    }
+
+    textarea {
+        width: 100%;
+    }
+}

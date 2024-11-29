@@ -1,0 +1,9 @@
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(to bottom, #a2d9ff, #f4f9ff);
+  color: #333;
+}
+.app {
+  text-align: center;
+}

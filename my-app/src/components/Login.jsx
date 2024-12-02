@@ -1,32 +1,55 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import '../styles/login.css'; // Ensure the CSS file is linked
+import axios from "axios";
 
-const SignUp = () => {
-  const handleSignUp = (e) => {
+const Login = () => {
+  const navigate = useNavigate();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+
+  const handleLogin = (e) => {
     e.preventDefault();
-    alert("Sign Up functionality submitted!");
-    // Add your sign-up logic here, like calling an API
+    axios.post('http://localhost:8000/login', { email, password })
+      .then(result => {
+        localStorage.setItem("token", result.data.token); // Save token to local storage
+        console.log(result);
+        navigate("/profile");
+      })
+      .catch(err => console.log("Found Error: ", err));
   };
 
   return (
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
-      <h2>Sign Up</h2>
-      <form onSubmit={handleSignUp}>
-        <div>
-          <label>Full Name: </label>
-          <input type="text" placeholder="Enter your full name" required />
-        </div>
-        <div style={{ marginTop: "10px" }}>
-          <label>Email: </label>
-          <input type="email" placeholder="Enter your email" required />
-        </div>
-        <div style={{ marginTop: "10px" }}>
-          <label>Password: </label>
-          <input type="password" placeholder="Enter your password" required />
-        </div>
-        <button type="submit" style={{ marginTop: "20px" }}>Sign Up</button>
+    <div className="login-container">
+      <h2>Login</h2>
+      <form onSubmit={handleLogin}>
+        <label htmlFor="email-input">
+          Email:
+          <input
+            id="email-input"
+            type="email"
+            placeholder="Enter your email"
+            required
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </label>
+        <label htmlFor="password-input">
+          Password:
+          <input
+            id="password-input"
+            type="password"
+            placeholder="Enter your password"
+            required
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </label>
+        <button type="submit" className="submit-btn">Login</button>
       </form>
+      <p>
+        Create New Account? <a href="/register">Sign Up</a>
+      </p>
     </div>
   );
 };
 
-export default SignUp;
+export default Login;

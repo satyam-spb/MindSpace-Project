@@ -1,30 +1,39 @@
-// routes/quoteRoutes.js
 import express from "express";
 import jwt from "jsonwebtoken";
-import User from "../models/User.js";
 import Quote from "../models/quoteModel.js";
 
 const router = express.Router();
 
-// Get Unique Quote
-router.get("/quote", async (req, res) => {
-  const token = req.headers.authorization.split(" ")[1];
-  const decoded = jwt.verify(token, process.env.JWT_SECRET);
-
+// Middleware to verify token
+const verifyToken = (req, res, next) => {
   try {
-    const user = await User.findById(decoded.id);
-    const seenQuoteIds = user.viewedQuotes;
+    const token = req.headers.authorization?.split(" ")[1];
+    if (!token) {
+      return res.status(401).json({ error: "No token provided" });
+    }
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.userId = decoded.id;
+    next();
+  } catch (error) {
+    return res.status(401).json({ error: "Invalid token" });
+  }
+};
 
-    // Fetch a random quote that hasn't been seen
-    const quote = await Quote.findOne({ _id: { $nin: seenQuoteIds } });
-    if (!quote) return res.status(404).json({ error: "No new quotes available" });
-
-    // Update user's viewed quotes
-    user.viewedQuotes.push(quote._id);
-    await user.save();
-
+router.get("/quote", verifyToken, async (req, res) => {
+  const { category = 'motivational' } = req.query;
+  
+  try {
+    const quotes = await Quote.find({ category });
+    if (!quotes.length) {
+      return res.status(404).json({ error: "No quotes found for this category" });
+    }
+    
+    const randomIndex = Math.floor(Math.random() * quotes.length);
+    const quote = quotes[randomIndex];
+    
     res.json(quote);
   } catch (error) {
+    console.error('Quote fetch error:', error);
     res.status(500).json({ error: "Failed to fetch quote" });
   }
 });

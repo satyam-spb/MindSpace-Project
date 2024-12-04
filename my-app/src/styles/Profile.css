@@ -1,115 +1,170 @@
-/* General styles */
+/* Modern Profile Page Styling */
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
-  background: linear-gradient(135deg, #e0f7fa, #ffffff);
-  color: #333;
-  height: 100vh;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding-top: 2rem;
 }
 
 .profile-container {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+  backdrop-filter: blur(4px);
+  width: 100%;
+  max-width: 800px;
+  margin: 20px;
 }
 
 h2 {
-  color: #0288d1;
+  color: #2d3436;
+  font-size: 1.8rem;
   text-align: center;
-  font-size: 2.5rem;
-  background: linear-gradient(45deg, #0288d1, #81d4fa);
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  background: linear-gradient(45deg, #6c5ce7, #a88beb);
   -webkit-background-clip: text;
-  color: transparent;
-  margin-bottom: 20px;
+  -webkit-text-fill-color: transparent;
 }
 
-/* Section Styles */
+.quote-display {
+  text-align: center;
+  font-size: 1.4rem;
+  color: #2d3436;
+  font-style: italic;
+  margin-bottom: 2rem;
+}
+
 .habits-section {
-  background: #ffffff;
-  border-radius: 10px;
-  padding: 20px;
-  margin-top: 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(31, 38, 135, 0.1);
+  margin-bottom: 2rem;
 }
 
 .habits-section h3 {
-  font-size: 1.8rem;
-  color: #0288d1;
-  margin-bottom: 15px;
+  font-size: 1.6rem;
+  color: #2d3436;
   text-align: center;
+  margin-bottom: 1.5rem;
 }
 
-/* Habit List Styles */
-ul {
-  list-style-type: none;
-  padding: 0;
+.add-habit-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
 }
 
-li {
-  background: linear-gradient(90deg, #b3e5fc, #ffffff);
-  margin: 10px 0;
-  padding: 15px;
-  border-radius: 8px;
+.habit-input {
+  width: 100%;
+  max-width: 600px;
+  padding: 12px;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.habit-input:focus {
+  outline: none;
+  border-color: #6c5ce7;
+  box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.1);
+}
+
+.habit-input::placeholder {
+  color: #a0a0a0;
+}
+
+.add-btn {
+  padding: 12px 24px;
+  background: linear-gradient(45deg, #6c5ce7, #a88beb);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.add-btn:hover {
+  background: linear-gradient(45deg, #5b4bc4, #9778e8);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(108, 92, 231, 0.2);
+}
+
+.add-btn:active {
+  transform: translateY(0);
+}
+
+.habit-list {
+  margin-top: 1.5rem;
+}
+
+.habit-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  padding: 0.8rem 1rem;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 10px rgba(31, 38, 135, 0.1);
 }
 
-li p {
-  margin: 0;
+.habit-item span {
   font-size: 1rem;
-  color: #333;
+  color: #2d3436;
+  flex-grow: 1;
 }
 
-button {
-  background: linear-gradient(90deg, #0288d1, #81d4fa);
+.delete-btn {
+  padding: 0.4rem 0.8rem;
+  background: #e74c3c;
   color: white;
+  font-size: 0.9rem;
+  font-weight: 500;
   border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: all 0.3s ease;
 }
 
-button:hover {
-  background: linear-gradient(90deg, #0288d1, #00bcd4);
+.delete-btn:hover {
+  background: #c0392b;
+  transform: translateY(-2px);
 }
 
-/* Input Fields */
-input[type="text"] {
-  padding: 10px;
-  margin-top: 10px;
-  width: 100%;
-  max-width: 300px;
-  border-radius: 5px;
-  border: 1px solid #0288d1;
-  outline: none;
-  transition: border-color 0.3s;
-}
+/* Responsive Design */
+@media (max-width: 768px) {
+  .profile-container {
+    padding: 1.5rem;
+    margin: 10px;
+  }
 
-input[type="text"]:focus {
-  border-color: #00bcd4;
-}
+  .habit-input {
+    max-width: 100%;
+    font-size: 0.9rem;
+  }
 
-/* Message Styles */
-.message {
-  text-align: center;
-  font-size: 1.2rem;
-  margin-top: 20px;
-  color: #d32f2f;
-}
+  .add-btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
 
-/* Links */
-a {
-  color: #0288d1;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
+  .habit-item {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
 }

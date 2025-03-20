@@ -8,19 +8,19 @@
     {
       "src": "my-app/package.json",
       "use": "@vercel/static-build",
-      "config": { 
-        "distDir": "dist" 
+      "config": {
+        "distDir": "dist"
       }
     }
   ],
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "backend/index.js" 
+      "dest": "backend/index.js"
     },
     {
       "src": "/(.*)",
-      "dest": "my-app/dist/index.html" 
+      "dest": "my-app/dist/index.html"
     }
   ]
 }

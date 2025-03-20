@@ -12,13 +12,16 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: [
-      "https://mind-space-app.vercel.app/", // Production domain
-    ],
-    methods: ["GET", "POST"],
+    origin: "https://mind-space-app.vercel.app",
+    methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
 );
+
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Server Error!');
+});
 app.use(express.urlencoded({extended:false}));
 
 

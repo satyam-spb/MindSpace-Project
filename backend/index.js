@@ -11,7 +11,13 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 app.use(
-  cors()
+  cors({
+    origin: [
+      "https://mind-space-app.vercel.app/", // Production domain
+    ],
+    methods: ["GET", "POST"],
+    credentials: true,
+  })
 );
 app.use(express.urlencoded({extended:false}));
 

@@ -21,15 +21,22 @@ const verifyToken = (req, res, next) => {
 
 router.get("/quote", verifyToken, async (req, res) => {
   const { category = 'motivational' } = req.query;
+  // console.log('Requested category:', category); // Debug log
   
   try {
     const quotes = await Quote.find({ category });
+    // console.log(`quotes : ${quotes}`);
+    
+    
     if (!quotes.length) {
       return res.status(404).json({ error: "No quotes found for this category" });
     }
     
     const randomIndex = Math.floor(Math.random() * quotes.length);
     const quote = quotes[randomIndex];
+
+    // console.log(`single quote : ${quote}`);
+    
     
     res.json(quote);
   } catch (error) {

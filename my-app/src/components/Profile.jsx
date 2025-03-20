@@ -30,7 +30,7 @@ const Profile = () => {
 
   const fetchUserData = async (token) => {
     try {
-      const response = await axios.get("http://localhost:8000/profile", {
+      const response = await axios.get("/api/profile", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setUser(response.data);
@@ -42,7 +42,7 @@ const Profile = () => {
 
   const fetchQuote = async (token) => {
     try {
-      const response = await axios.get(`http://localhost:8000/quote?category=${quoteCategory}`, {
+      const response = await axios.get(`/api/quote?category=${quoteCategory}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setQuote(response.data);
@@ -59,7 +59,7 @@ const Profile = () => {
     const token = localStorage.getItem("token");
     try {
       const response = await axios.post(
-        "http://localhost:8000/profile/add-habit",
+        "/api/profile/add-habit",
         { newHabit },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -78,7 +78,7 @@ const Profile = () => {
     const token = localStorage.getItem("token");
     try {
       const response = await axios.post(
-        "http://localhost:8000/profile/add-streak",
+        "/api/profile/add-streak",
         { habitName },
         { headers: { Authorization: `Bearer ${token}` } }
       );

@@ -10,13 +10,18 @@ const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:8000/login', { email, password })
-      .then(result => {
-        localStorage.setItem("token", result.data.token); // Save token to local storage
-        console.log(result);
-        navigate("/profile");
-      })
-      .catch(err => console.log("Found Error: ", err));
+    axios.post('/api/login', { email, password }, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+    .then((result) => {
+      localStorage.setItem("token", result.data.token);
+      navigate("/profile");
+    })
+    .catch((err) => {
+      console.error("Error:", err.response?.data || err.message);
+    });
   };
 
   return (

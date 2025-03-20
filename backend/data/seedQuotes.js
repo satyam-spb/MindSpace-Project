@@ -1,8 +1,8 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+import path from 'path';
+dotenv.config({ path: path.resolve(process.cwd(), '.env') }); 
 import Quote from '../models/quoteModel.js';
-
-dotenv.config();
 
 const quotes = [
   {

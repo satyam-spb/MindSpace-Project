@@ -9,7 +9,7 @@ const Signup = () => {
   const [password, setPassword] = useState();
   const handleSignup = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:8000/register',{username,email,password})
+    axios.post('/api/register',{username,email,password})
     .then(
       result => {
         console.log(result)

@@ -5,12 +5,16 @@ import cors from 'cors';
 import authRoutes from './routes/authRoutes.js';
 import quoteRoutes from './routes/quoteRoutes.js';
 
+
 dotenv.config();
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors()
+);
 app.use(express.urlencoded({extended:false}));
+
 
 const connectDB = async () => {
   try {
@@ -23,7 +27,9 @@ const connectDB = async () => {
 };
 connectDB();
 
-app.use('/', authRoutes);
-app.use('/', quoteRoutes); // Add the quote routes
+app.use('/api', authRoutes);
+app.use('/api', quoteRoutes); // Add the quote routes
 
 app.listen(process.env.PORT, () => console.log(`Server running on port ${process.env.PORT}`));
+
+export default app;
